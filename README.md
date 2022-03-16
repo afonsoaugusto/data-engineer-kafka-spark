@@ -72,3 +72,70 @@
 - escrita sequencial linear
 
 - <https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum>
+
+#### Arquitetura do kafka
+
+- Pull Architecture
+
+### dia 2 - ingestion
+
+#### Kafka trabalha melhor com Avro
+
+-> Ele performa melhor com dados Avro.
+-> Confluent schema registry
+
+#### Producer
+
+-> librdKafka -> <https://github.com/edenhill/librdkafka>
+
+
+#### Message Durability
+
+- Fire and Forget -> lança e solta
+- Synchronous Send -> espera o retorno do kafka
+- Asynchronous Send -> Fica perguntando se tem resposta? (callback)
+
+#### Acknowledgements = [Acks]
+
+- Acks[0] = não espera a resposta do kafka (fire and forget)
+- Acks[1] = padrão do kafka, pode ter data loss
+- Acks[ALL] = espera a replicação acontecer
+
+#### Idempotent Producers & EOS
+
+- At [Most] Once
+- At [Least] Once
+- [Exactly] Once Semantics -> enable.idempotent
+  - <https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/>
+
+#### Para não ter duplicado e ordenado
+
+- max.in.flight.requests.per.connection=1
+- enable.idempotence=true
+- acks=ALL
+- retries > 10000
+
+#### batching & Compression
+
+- batch.size
+- linger.ms
+
+#### Sticky Partitioner
+
+####
+
+####
+
+####
+
+####
+
+####
+
+####
+
+####
+
+####
+
+####
