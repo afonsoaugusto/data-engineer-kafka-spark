@@ -122,7 +122,11 @@
 
 #### Sticky Partitioner
 
-####
+#### links
+
+- <https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/>
+- <https://towardsdatascience.com/10-configs-to-make-your-kafka-producer-more-resilient-ec6903c63e3f#:~:text=An%20ack%20is%20an%20acknowledgment,before%20considering%20a%20successful%20commit.>
+- <https://github.com/owsplumbers/trn-spec-kafka>
 
 ####
 
