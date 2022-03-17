@@ -128,7 +128,72 @@
 - <https://towardsdatascience.com/10-configs-to-make-your-kafka-producer-more-resilient-ec6903c63e3f#:~:text=An%20ack%20is%20an%20acknowledgment,before%20considering%20a%20successful%20commit.>
 - <https://github.com/owsplumbers/trn-spec-kafka>
 
-####
+###  dia 3 - processing
+
+#### Faust
+
+- <https://faust.readthedocs.io/en/latest/>
+
+#### Evento
+
+- Ordenado
+- Imutável
+- Replayable
+
+#### Stream processing
+
+- Time
+  - Event Time
+  - Log Append Time
+  - Processing Time
+
+- State
+  (preferencia para estado em memoria na aplicação - rocksdb), consulta externa pode ser prejudicial
+  - Local or Internal State
+  - External State
+
+- Stream Table Duality
+  - Tables
+  - Streams
+
+#### Flink
+
+- Garante Exactly-Once semantics <https://flink.apache.org/features/2018/03/01/end-to-end-exactly-once-apache-flink.html>
+
+- Boundend -> janela de tempo determinado - inicio e fim definidos
+- Unbounded -> janela de tempo indefinido - do inicio e até o fim
+
+#### Kafka Streams
+
+- <https://kafka.apache.org/31/documentation/streams/>
+- Base para o KsqlDB -> KsqlDB é um wrapper para o Kafka Streams
+- Biblioteca de processamento
+
+- KTable
+- KStream
+  - Stream (changelog) -> como se fosse um topico com log compation
+
+#### KsqlDB
+
+- <https://docs.ksqldb.io/en/latest/>
+
+#### Spark
+
+- Engine de computação em memoria
+
+- RDD, Spark Streaming -> Deprecated, api de baixo nivel
+
+- Spark SQL, DataSets &  DataFrames -> alto nivel 
+
+- spark.read -> sempre earliest
+
+- leitura
+  - earliest -> do primeiro até o fim
+  - latest -> do ultimo lido até o fim (se é a primeira vez que roda, ele vai começar do inicio)
+
+#### faust
+
+- Exactle once semantics
 
 ####
 
@@ -142,4 +207,7 @@
 
 ####
 
-####
+#### links, pesquisa:
+
+- Database em memoria para armazenar estado -> <http://rocksdb.org/ >
+- <https://sortbenchmark.org/>
