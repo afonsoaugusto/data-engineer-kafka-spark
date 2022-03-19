@@ -8,6 +8,7 @@
 
 - sneak peak
 - cap (distribuido) vs acid (relacional)
+- treinamentos gratuitos <https://www.confluent.io/blog/confluent-developer-launches-free-apache-kafka-courses-and-tutorials-online/>
 
 #### arquiteturas de dados
 
@@ -195,19 +196,145 @@
 
 - Exactle once semantics
 
-####
-
-####
-
-####
-
-####
-
-####
-
-####
-
 #### links, pesquisa:
 
 - Database em memoria para armazenar estado -> <http://rocksdb.org/ >
 - <https://sortbenchmark.org/>
+
+
+### dia 4 - sinks serving
+
+#### Consumer group
+
+- todo consumidor pertence a um consumer group
+
+#### 3 casos que rabalancer acontece
+
+O rebalancer para o consumer group para reajustar
+
+- adicionar um novo consumidor no consumer group
+- o hartbeat do consumer group falhou (desligou) ele remove o consumidor
+- modificação no topico = novas partições - para todos os consumers groups
+
+#### commits e offsets
+
+- <https://docs.confluent.io/platform/current/clients/consumer.html#offset-management>
+
+- o padrão do kafka te permite ter data loss ou dados duplicados.
+
+#### kafka connect
+
+- Movimento de dados, In e Out
+
+#### morden data wherehouse
+
+- mpp -> massive parallel processing
+
+#### Real Time Ingest
+
+- EOS
+- Kafka as consumer
+
+####
+
+#### links
+
+- biblioteca python marshmallow para abstração de schema
+  - <https://marshmallow.readthedocs.io/en/stable/>  - marshmallow: simplified object serialization¶
+- <https://engineering.linkedin.com/blog/2021/text-analytics-on-linkedin-talent-insights-using-apache-pinot>
+
+### dia 5 - best-pratices
+
+#### Estratégias de desenvolvimento
+
+- Message Ordering in Apache Kafka
+
+Producer Configs
+- Exactly-Once Enabled
+- max.inflight.connectors <=5
+- acks=all
+- partition=1
+
+#### Transactions - multi-operation-commits
+
+- Como rollback acontece?
+- <https://stackoverflow.com/questions/56156749/how-does-kafka-know-whether-to-roll-forward-or-roll-back-a-transaction>
+- <https://docs.google.com/document/d/11Jqy_GjUGtdXJK94XGsEIK7CP1SnQGdp2eF0wSw9ra8/edit#bookmark=kix.uu5bwrue4nmm>
+
+```
+eu perdi aqui
+como faz o rollback? ele insere outro evento apagando? ou ele remove o evento?
+
+19:37
+Respondido privadamente
+nesse caso ele nao inseri a operação e atomica ou ela acontece como um todo ou simples nao acontece
+```
+
+#### Stream Table Duality
+
+- kafka topic log compaction
+- <https://towardsdatascience.com/log-compacted-topics-in-apache-kafka-b1aa1e4665a7>
+
+#### Windowing
+
+- Session
+- Hopping
+- Tumbling
+
+- <https://kafka.apache.org/20/documentation/streams/developer-guide/dsl-api.html#windowing>
+
+#### Log
+
+- INFO é importante
+
+#### Storage Resizing
+
+- Adicionar mais discos - JBOD
+
+#### Partition Reassign
+
+- Reorganização das partições com a adição de mais discos.
+- operação offline
+
+#### Cruise Control - administração do cluster
+
+- <https://github.com/linkedin/cruise-control>
+- <https://engineering.linkedin.com/blog/2019/02/introducing-kafka-cruise-control-frontend>
+
+#### kafka mirrormaker
+
+- conecta dois clusters
+- <https://docs.confluent.io/4.0.0/multi-dc/mirrormaker.html>
+
+#### https://lenses.io/
+
+- Mapa da topologia
+
+#### Tipos de clusters
+
+- Otimizado para Throughput
+- Otimizado para Latency
+- Otimizado para Durability
+- Otimizado para Availability
+
+#### Security
+
+- communication - SSL
+- Authentication - SCRAM
+- Authorization - ACL
+
+####
+
+####
+
+####
+
+####
+
+#### Links
+
+- Cursos do Stéphane Maarek kafka
+- https://mateus-oliveira.medium.com/kafka-no-k8s-strimzi-zero-to-hero-round-1-a48e16f887ba
+- <https://www.confluent.io/blog/transactions-apache-kafka/>
+- <https://developer.confluent.io/learn/kafka-transactions-and-guarantees/>
+- <https://strimzi.io/documentation/>
