@@ -338,3 +338,40 @@ nesse caso ele nao inseri a operação e atomica ou ela acontece como um todo ou
 - <https://www.confluent.io/blog/transactions-apache-kafka/>
 - <https://developer.confluent.io/learn/kafka-transactions-and-guarantees/>
 - <https://strimzi.io/documentation/>
+
+## Spark
+
+### day-1
+
+Spark = engine de computação distribuida em memoria
+
+#### Bibliotecas depreciadas:
+- RDD
+- Spark Streaming
+
+#### Melhor metodo para trazer dados para o spark
+
+- Data Lake
+- Kafka
+
+#### Spark trabalha com Partições
+
+- As partições por padrão são configuradas em 128 MB
+- Cada partição tem uma thread.
+
+#### whole stage code generation
+
+- <https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/6122906529858466/293651311471490/5382278320999420/latest.html>
+- <https://databricks.com/session_na20/understanding-and-improving-code-generation>
+
+#### Pandas
+
+- pandas não escala em maquinas, ele paralelisa em threads (single node)
+
+#### PySpark da 3.2 e depois
+
+- Escrever pandas dentro do spark sem fricção.
+
+#### Links
+
+- <https://comparecloud.in/>
