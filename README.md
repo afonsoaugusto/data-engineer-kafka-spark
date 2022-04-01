@@ -375,3 +375,122 @@ Spark = engine de computação distribuida em memoria
 #### Links
 
 - <https://comparecloud.in/>
+
+### day-2 - batch etl
+
+#### Melhores praticas Data Lake
+
+- Raw Ingestion (S3, pode ser tbm o kafka) -> Landing Zone (dado cru sem tratamento, json, xml)
+- Transformation -> Processing Zone -> (parquet, avro, iceberg, delta, hudi)
+- Curated Zone
+
+#### Data Lakehouse
+
+- Hudi, Iceberg e Delta
+
+#### Delta Lake
+
+- <https://databricks.com/wp-content/uploads/2020/12/cidr_lakehouse.pdf>
+- <https://databricks.com/wp-content/uploads/2021/10/The-Data-Lakehouse.pdf>
+
+#### Delta Sharing
+
+- <https://databricks.com/blog/2021/05/26/introducing-delta-sharing-an-open-protocol-for-secure-data-sharing.html>
+
+#### Databricks
+
+- Criar um cluster
+
+- Opensource do Databricks -> Apache Zeppelin <https://zeppelin.apache.org/>
+
+- Protoloco mais rapido para acessar o data lake -> da microsoft abfss (azure data lake gen2)
+
+#### Links
+
+### day-3 Near Real Time
+
+#### Event Stream
+
+- Eventos são ordenados
+- São imutaveis
+- são reprocessaveis
+
+#### Real Time Stream Processing
+
+- Open Source OSS
+  - Kafka
+  - Spark
+  - Apex
+  - Flink
+  - Storm
+  - Beam
+- Azure
+  - HDInsight
+  - Synapse Analitycs
+  - Stream Analytics
+  - Azure Functions
+- GCP
+- AWS
+
+#### Message Delivery Guarantees [Idempotent Produces & EOS]
+
+- At [Most] Once -> Pode ter perda
+- At [Least] Once -> Pode ter perda e duplicacao
+- Exactly [Once] -> Sem perda ou duplicacao + ordenacao do envio
+
+#### Kafka Producer [Message Durrability]
+
+Message Methods=comportamento do produtor em relação a resposta do broker
+- Fire-and-Forget
+- Syncrhonous Send
+- Asyncrhonous Send
+
+Acks=comportamento do broker em relação ao recebimento da mensagem
+- No-ack [0]
+- Acks [1]
+- Acks [ALL]
+
+#### The log Structure
+
+- Headers
+
+- Habilitar o SSL vc perde o zero copy
+  - <https://cloudnweb.dev/2019/05/heres-what-makes-apache-kafka-so-fast-kafka-series-part-3/>
+
+#### Modelos de stream
+
+- Naive approach -> sempre tem que listar os arquivos
+
+#### Links
+
+- Tipos de erros em que o producer não faz retry
+- simulado Stephane Maarek confluent kafka - <https://www.udemy.com/course/confluent-certified-developer-for-apache-kafka/>
+- <https://www.oak-tree.tech/blog/kafka-admin-remove-messages>
+
+
+### day-4 lakehouse
+
+#### ETL vs ELT
+
+- ETL = Extract Transform Load
+- ELT = Extract Load Transform
+
+#### MDW - Morden Data Warehouse
+
+- MPP = Massive Parallel Processing
+
+#### Data Lakehouse
+
+- Remove a cópia da Gold para o DW
+
+#### Data Virtualization
+
+- Subir o dado para a memoria e processar
+- Trino <https://trino.io/>
+- <https://www.starburst.io/wp-content/uploads/2021/04/Trino-Oreilly-Guide.pdf>
+
+#### Links
+
+- Bill Inmon - pai do DW - https://ia800202.us.archive.org/9/items/2005BuildingTheDataWarehouse4thEditionWilliamH.Inmon/2005%20-%20Building%20The%20Data%20Warehouse%20%284th%20Edition%29%20%28William%20H.%20Inmon%29.pdf
+- https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-omni
+- https://cloud.google.com/bigquery-omni/docs/azure/create-connection
