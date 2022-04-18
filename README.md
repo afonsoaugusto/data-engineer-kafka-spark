@@ -494,3 +494,31 @@ Acks=comportamento do broker em relação ao recebimento da mensagem
 - Bill Inmon - pai do DW - https://ia800202.us.archive.org/9/items/2005BuildingTheDataWarehouse4thEditionWilliamH.Inmon/2005%20-%20Building%20The%20Data%20Warehouse%20%284th%20Edition%29%20%28William%20H.%20Inmon%29.pdf
 - https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-omni
 - https://cloud.google.com/bigquery-omni/docs/azure/create-connection
+
+
+### day-5 best-pratices
+
+#### The spark lifecycle
+
+- A bronze pode ter caracteristica de stage
+  - Ela poderia ter um ttl de 7 dias por exemplo
+
+- A silver é um fim
+
+#### Spark plan execution
+
+- Task: single thread
+
+- Job -> Stage -> Task
+
+#### Exchange
+
+- Acontece quando:
+  - Join
+  - Repartition
+  - Coalesce
+  - Sort
+
+#### Adaptive Query Execution
+
+#### Links
